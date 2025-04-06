@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var view:TextView
     lateinit var clear:Button
     lateinit var equal:Button
+    lateinit var delete:Button
     var first=""
     var second=""
     var operator=""
@@ -41,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val operators=listOf(
-            R.id.add,R.id.subtract,R.id.multiply,R.id.divide
+            R.id.add,R.id.subtract,R.id.multiply
         )
         for(id in operators){
             findViewById<Button>(id).setOnClickListener({
@@ -62,6 +63,22 @@ class MainActivity : AppCompatActivity() {
             view.text="0"
         })
 
+        delete=findViewById(R.id.del)
+        delete.setOnClickListener({
+            if(isSecond && !second.isEmpty()){
+                second=second.dropLast(1)
+                view.text="$first $operator $second"
+            }else if(!isSecond && !first.isEmpty()){
+                first=first.dropLast(1)
+                view.text="$first"
+            }else{
+                if(!operator.isEmpty()) {
+                    operator = ""
+                    isSecond=false
+                    view.text=first
+                }
+            }
+        })
         equal=findViewById(R.id.equal)
         equal.setOnClickListener({
             if(!first.isEmpty()&& !second.isEmpty()&& !operator.isEmpty()) {
@@ -84,7 +101,6 @@ class MainActivity : AppCompatActivity() {
             "+"->num1+num2
             "-"->num1-num2
             "*"->num1*num2
-            "/"->num1/num2
             else->0.0
         }
         return result

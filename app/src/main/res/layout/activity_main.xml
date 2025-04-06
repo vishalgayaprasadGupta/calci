@@ -49,7 +49,7 @@
         <!-- Row 4 -->
         <Button android:id="@+id/zero" android:text="0" style="@style/CalcButton"/>
         <Button android:id="@+id/clear" android:text="C" style="@style/CalcButton"/>
-        <Button android:id="@+id/divide" android:text="/" style="@style/CalcButton"/>
+        <Button android:id="@+id/del" android:text="Del" style="@style/CalcButton"/>
         <Button android:id="@+id/equal" android:text="=" style="@style/CalcButton"/>
 
     </GridLayout>
